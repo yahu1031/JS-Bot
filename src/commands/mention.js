@@ -8,7 +8,7 @@ const taggedBotReply = new Discord.MessageEmbed()
     .setDescription('⚠️ These commands can\'t be within a message, and there can\'t be multiple per messages')
     // .setThumbnail('https://i.imgur.com/wSTFkRM.png')
     .addFields(
-        { name: 'Mention me for this help.', value: 'Tagging this bot will show up you this message.' },
+        { name: 'Mention me for this help.', value: 'Tagging me will show up you this message.' },
         { name: '\u200B', value: '\u200B' },
         { name: '%kick UserID', value: 'This command will kick the user out.' },
         { name: '\u200B', value: '\u200B' },
@@ -23,7 +23,7 @@ const taggedBotReply = new Discord.MessageEmbed()
 module.exports = (message) => {
     if (message.author.bot) return;
     // Watching the user message content whether bot is tagged or not.
-    if (message.content === '<@!756898917643190462>') {
+    if (message.content === `<@!${process.env.BOT_ID}>`) {
         message.channel.send(taggedBotReply);
         return
     }

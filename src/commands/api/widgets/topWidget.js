@@ -39,7 +39,7 @@ module.exports = async (message) => {
                 }
                 if (cmd_href == '') {
                     message.channel.send(Discord.MessageEmbed()
-                        .setColor('#ooffff')
+                        .setColor('#ff0000')
                         .setTitle('Not Found')
                         .setDescription(`Sorry, we couldn't able to fetch detailes about ${cmd_name}.`))
                     console.log('command taken');

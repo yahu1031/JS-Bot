@@ -1,3 +1,5 @@
+const Discord = require("discord.js");
+
 const PREFIX = '%';
 module.exports = (message) => {
     if (message.author.bot) return;
@@ -12,9 +14,9 @@ module.exports = (message) => {
             .split(/\s+/);
 
         // Checking if that is a kick command.
-        if (cmd_name === 'kick') {
+        if (cmd_name === 'warn') {
             // Check the user have permission to kick someone.
-            if (message.member.hasPermission('KICK_MEMBERS')) {
+            if (message.member.hasPermission('KICK_MEMBERS' && 'BAN_MEMBERS')) {
                 // Checking for the arguments.
                 if (args.length != 0) {
                     // Checking the first argument is not a Not-A-Number.
@@ -27,12 +29,14 @@ module.exports = (message) => {
                             // Checking for the member in the server.
                             if (member) {
                                 // Kick the user and reply.
-                                member.kick()
-                                    .then((member) =>
-                                        message.channel.send('Yooo! we kicked the user\'s ass out of the server.'))
-                                    // Show the bot can't kick the user because of the higher role in server.
-                                    .catch((err) => message.channel.send(err.message));
-                                return
+                                if (args[1] == null) {
+                                    args[1] = `<@!${args[0]}> You have been warned by Admins.`
+                                }
+                                let embed = new Discord.MessageEmbed()
+                                    .setColor('#E67E22')
+                                    .setTitle('Warning')
+                                    .setDescription(`<@!${args[0]}> ${args[1]}`)
+                                message.channel.send(embed)
                             }
                             else
                                 return message.channel.send('Stupid, check whether the user is in this server.');

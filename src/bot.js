@@ -9,6 +9,8 @@ const mentionBot = require('./commands/mention');
 const objects = require('./commands/api/widgets/topWidget');
 const deleteData = require('./commands/delete');
 const allObjects = require('./commands/api/widgets/allWidgets');
+const warnUser = require('./commands/warn');
+const topLibrary = require('./commands/api/libraries/topLibraries')
 // On bot logs in
 bot.once('ready', () => {
     console.log(`${bot.user.tag} has logged in.`);
@@ -26,7 +28,10 @@ bot.on('message', kickUser)
 bot.on('message', banUser)
 // Deleting data in channel
 bot.on('message', deleteData)
-
+// Warning user function
+bot.on('message', warnUser)
+// Getting top Lib
+bot.on('message',topLibrary)
 
 bot.login(process.env.BOT_TOKEN);
 

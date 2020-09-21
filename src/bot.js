@@ -6,9 +6,9 @@ const bot = new Client();
 const kickUser = require('./commands/kick');
 const banUser = require('./commands/ban');
 const mentionBot = require('./commands/mention');
-const objects = require('./commands/api/topWidget');
+const objects = require('./commands/api/widgets/topWidget');
 const deleteData = require('./commands/delete');
-const allObjects = require('./commands/api/allWidgets');
+const allObjects = require('./commands/api/widgets/allWidgets');
 // On bot logs in
 bot.once('ready', () => {
     console.log(`${bot.user.tag} has logged in.`);
